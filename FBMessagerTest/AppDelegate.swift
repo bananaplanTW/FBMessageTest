@@ -10,13 +10,18 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, FBSDKMessengerURLHandlerDelegate {
 
     var window: UIWindow?
+    var _messengerUrlHandler: FBSDKMessengerURLHandler?;
+    var _composerContext: FBSDKMessengerURLHandlerOpenFromComposerContext?;
+    var _replyContext: FBSDKMessengerURLHandlerReplyContext?;
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        _messengerUrlHandler = FBSDKMessengerURLHandler();
+        _messengerUrlHandler?.delegate = self;
         return true
     }
 
@@ -43,13 +48,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        if (_messengerUrlHandler!.canOpenURL(url, sourceApplication: sourceApplication)){
+            _messengerUrlHandler!.openURL(url, sourceApplication: sourceApplication);
+        }
+        return true;
+    }
+    
+    /**
+        composer context
+      */
+    func messengerURLHandler(messengerURLHandler: FBSDKMessengerURLHandler!, didHandleOpenFromComposerWithContext context: FBSDKMessengerURLHandlerOpenFromComposerContext!) {
+        _composerContext = context;
+    }
+    
+    /*
+        reply context
+    */
+    func messengerURLHandler(messengerURLHandler: FBSDKMessengerURLHandler!, didHandleReplyWithContext context: FBSDKMessengerURLHandlerReplyContext!) {
+        _replyContext = context;
+    }
 
     // MARK: - Core Data stack
 
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "Bananaplan.FBMessagerTest" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as NSURL
+        return urls[urls.count-1] as! NSURL
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {

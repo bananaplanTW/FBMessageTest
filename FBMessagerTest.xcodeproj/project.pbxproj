@@ -14,6 +14,8 @@
 		6712A6281AD56F8900EE75C1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6712A6271AD56F8900EE75C1 /* Images.xcassets */; };
 		6712A62B1AD56F8900EE75C1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6712A6291AD56F8900EE75C1 /* LaunchScreen.xib */; };
 		6712A6371AD56F8A00EE75C1 /* FBMessagerTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6712A6361AD56F8A00EE75C1 /* FBMessagerTestTests.swift */; };
+		6712A6411AD56FB900EE75C1 /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6712A6401AD56FB900EE75C1 /* FBSDKMessengerShareKit.framework */; };
+		672EC8851ADABAB900627B4C /* test2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 672EC8841ADABAB900627B4C /* test2.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,10 @@
 		6712A6301AD56F8A00EE75C1 /* FBMessagerTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FBMessagerTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6712A6351AD56F8A00EE75C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6712A6361AD56F8A00EE75C1 /* FBMessagerTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBMessagerTestTests.swift; sourceTree = "<group>"; };
+		6712A6401AD56FB900EE75C1 /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
+		6712A6431AD572D300EE75C1 /* FBMessagerTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FBMessagerTest-Bridging-Header.h"; sourceTree = "<group>"; };
+		672EC8831ADAB79300627B4C /* test.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.m4a; sourceTree = "<group>"; };
+		672EC8841ADABAB900627B4C /* test2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = test2.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6712A6411AD56FB900EE75C1 /* FBSDKMessengerShareKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +71,7 @@
 				6712A61A1AD56F8900EE75C1 /* FBMessagerTest */,
 				6712A6331AD56F8A00EE75C1 /* FBMessagerTestTests */,
 				6712A6191AD56F8900EE75C1 /* Products */,
+				6712A6431AD572D300EE75C1 /* FBMessagerTest-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,12 +87,15 @@
 		6712A61A1AD56F8900EE75C1 /* FBMessagerTest */ = {
 			isa = PBXGroup;
 			children = (
+				6712A6401AD56FB900EE75C1 /* FBSDKMessengerShareKit.framework */,
 				6712A61D1AD56F8900EE75C1 /* AppDelegate.swift */,
 				6712A6221AD56F8900EE75C1 /* ViewController.swift */,
 				6712A6241AD56F8900EE75C1 /* Main.storyboard */,
 				6712A6271AD56F8900EE75C1 /* Images.xcassets */,
 				6712A6291AD56F8900EE75C1 /* LaunchScreen.xib */,
+				672EC8841ADABAB900627B4C /* test2.m4a */,
 				6712A61F1AD56F8900EE75C1 /* FBMessagerTest.xcdatamodeld */,
+				672EC8831ADAB79300627B4C /* test.m4a */,
 				6712A61B1AD56F8900EE75C1 /* Supporting Files */,
 			);
 			path = FBMessagerTest;
@@ -164,6 +175,7 @@
 				TargetAttributes = {
 					6712A6171AD56F8900EE75C1 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 2UXNBJRT9M;
 					};
 					6712A62F1AD56F8A00EE75C1 = {
 						CreatedOnToolsVersion = 6.2;
@@ -198,6 +210,7 @@
 				6712A6261AD56F8900EE75C1 /* Main.storyboard in Resources */,
 				6712A62B1AD56F8900EE75C1 /* LaunchScreen.xib in Resources */,
 				6712A6281AD56F8900EE75C1 /* Images.xcassets in Resources */,
+				672EC8851ADABAB900627B4C /* test2.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,9 +355,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FBMessagerTest",
+				);
 				INFOPLIST_FILE = FBMessagerTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "FBMessagerTest-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -352,9 +376,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FBMessagerTest",
+				);
 				INFOPLIST_FILE = FBMessagerTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "FBMessagerTest-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -411,6 +445,7 @@
 				6712A63C1AD56F8A00EE75C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6712A63D1AD56F8A00EE75C1 /* Build configuration list for PBXNativeTarget "FBMessagerTestTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +454,7 @@
 				6712A63F1AD56F8A00EE75C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
